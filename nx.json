@@ -29,6 +29,13 @@
     "tagesbuch-e2e": {
       "tags": [],
       "implicitDependencies": ["tagesbuch"]
+    },
+    "auth": {
+      "tags": []
+    },
+    "auth-e2e": {
+      "tags": [],
+      "implicitDependencies": ["auth"]
     }
   }
 }
