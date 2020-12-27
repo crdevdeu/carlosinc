@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "tagesbuch": {
+      "projectType": "application",
+      "root": "apps/tagesbuch",
+      "sourceRoot": "apps/tagesbuch/src",
+      "prefix": "carlosinc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/tagesbuch",
+            "index": "apps/tagesbuch/src/index.html",
+            "main": "apps/tagesbuch/src/main.ts",
+            "polyfills": "apps/tagesbuch/src/polyfills.ts",
+            "tsConfig": "apps/tagesbuch/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/tagesbuch/src/favicon.ico",
+              "apps/tagesbuch/src/assets"
+            ],
+            "styles": ["apps/tagesbuch/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tagesbuch/src/environments/environment.ts",
+                  "with": "apps/tagesbuch/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tagesbuch:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tagesbuch:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tagesbuch:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/tagesbuch/src/**/*.ts",
+              "apps/tagesbuch/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/tagesbuch"],
+          "options": {
+            "jestConfig": "apps/tagesbuch/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tagesbuch-e2e": {
+      "root": "apps/tagesbuch-e2e",
+      "sourceRoot": "apps/tagesbuch-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tagesbuch-e2e/cypress.json",
+            "tsConfig": "apps/tagesbuch-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tagesbuch:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tagesbuch:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tagesbuch-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "tagesbuch"
+}
