@@ -17,20 +17,15 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      
-        // For remotes (please adjust)
-        // name: "auth",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/auth/src/app/app.component.ts',
-        // },        
-        
+        name: "auth",
+        filename: "remoteEntry.js",
+        exposes: {
+            './Component': './apps/auth/src/app/app.component.ts',
+        },  
         // For hosts (please adjust)
         // remotes: {
         //     "tagesbuch": "tagesbuch@http://localhost:5000/remoteEntry.js",
-
         // },
-
         shared: {
           "@angular/core": { singleton: true, strictVersion: true }, 
           "@angular/common": { singleton: true, strictVersion: true }, 
