@@ -20,7 +20,7 @@ module.exports = {
         name: "auth",
         filename: "remoteEntry.js",
         exposes: {
-            './Component': './apps/auth/src/app/app.component.ts',
+            './Module': './apps/auth/src/app/test/test.module.ts',
         },  
         // For hosts (please adjust)
         // remotes: {

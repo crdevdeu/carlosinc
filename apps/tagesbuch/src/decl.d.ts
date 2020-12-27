@@ -1,1 +1,1 @@
-declare module 'auth/Component';
+declare module 'auth/Module';
