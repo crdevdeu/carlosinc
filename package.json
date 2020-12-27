@@ -28,7 +28,11 @@
     "help": "nx help"
   },
   "private": true,
+  "resolutions": {
+    "webpack": "^5.0.0"
+  },
   "dependencies": {
+    "@angular-architects/module-federation": "^1.2.2",
     "@angular/animations": "^11.0.0",
     "@angular/common": "^11.0.0",
     "@angular/compiler": "^11.0.0",
@@ -38,6 +42,7 @@
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
     "@nrwl/angular": "11.0.18",
+    "ngx-build-plus": "^11.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"

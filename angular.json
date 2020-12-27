@@ -8,7 +8,7 @@
       "prefix": "carlosinc",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/tagesbuch",
             "index": "apps/tagesbuch/src/index.html",
@@ -20,8 +20,11 @@
               "apps/tagesbuch/src/favicon.ico",
               "apps/tagesbuch/src/assets"
             ],
-            "styles": ["apps/tagesbuch/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/tagesbuch/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/tagesbuch/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -49,18 +52,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/tagesbuch/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "tagesbuch:build"
+            "browserTarget": "tagesbuch:build",
+            "extraWebpackConfig": "apps/tagesbuch/webpack.config.js",
+            "port": 5000
           },
           "configurations": {
             "production": {
-              "browserTarget": "tagesbuch:build:production"
+              "browserTarget": "tagesbuch:build:production",
+              "extraWebpackConfig": "apps/tagesbuch/webpack.prod.config.js"
             }
           }
         },
@@ -80,11 +87,14 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/tagesbuch"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/tagesbuch"
+          ],
           "options": {
             "jestConfig": "apps/tagesbuch/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/tagesbuch/webpack.config.js"
           }
         }
       }
@@ -110,7 +120,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/tagesbuch-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/tagesbuch-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
