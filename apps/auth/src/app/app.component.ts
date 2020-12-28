@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'carlosinc-root',
+  selector: 'carlosinc-auth-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
