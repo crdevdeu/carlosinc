@@ -18,7 +18,12 @@
             "aot": true,
             "assets": [
               "apps/tagesbuch/src/favicon.ico",
-              "apps/tagesbuch/src/assets"
+              "apps/tagesbuch/src/assets",
+              {
+                "glob": "_redirects",
+                "input": "apps/tagesbuch/src",
+                "output": "/"
+              }
             ],
             "styles": [
               "apps/tagesbuch/src/styles.scss"
@@ -144,7 +149,12 @@
             "aot": true,
             "assets": [
               "apps/auth/src/favicon.ico",
-              "apps/auth/src/assets"
+              "apps/auth/src/assets",
+              {
+                "glob": "_redirects",
+                "input": "apps/auth/src",
+                "output": "/"
+              }
             ],
             "styles": [
               "apps/auth/src/styles.scss"

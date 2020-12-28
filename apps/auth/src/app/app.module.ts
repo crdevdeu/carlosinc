@@ -11,15 +11,11 @@ import { TestModule } from './test/test.module';
     BrowserModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: AppComponent,
-        pathMatch: 'full',
-      },
-      {
         path: 'test',
         loadChildren: () =>
           import('./test/test.module').then((m) => m.TestModule),
       },
+      { path: '', pathMatch: 'full', redirectTo: 'test' },
     ]),
   ],
   providers: [],
