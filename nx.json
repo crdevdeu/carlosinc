@@ -36,6 +36,13 @@
     "auth-e2e": {
       "tags": [],
       "implicitDependencies": ["auth"]
+    },
+    "entries": {
+      "tags": []
+    },
+    "entries-e2e": {
+      "tags": [],
+      "implicitDependencies": ["entries"]
     }
   }
 }
