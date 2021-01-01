@@ -1,1 +1,1 @@
-declare module 'auth/Module';
+declare module 'entries/Module';

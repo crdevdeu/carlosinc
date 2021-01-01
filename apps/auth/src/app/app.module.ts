@@ -3,20 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { TestModule } from './test/test.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {
-        path: 'test',
-        loadChildren: () =>
-          import('./test/test.module').then((m) => m.TestModule),
-      },
-      { path: '', pathMatch: 'full', redirectTo: 'test' },
-    ]),
+    RouterModule.forRoot([{ path: '', component: AppComponent }]),
   ],
   providers: [],
   bootstrap: [AppComponent],

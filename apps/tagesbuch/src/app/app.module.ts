@@ -7,24 +7,12 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const APP_ROUTES: Routes = [
-  {
-    path: '',
-    component: AppComponent,
-    pathMatch: 'full',
-  },
-
+  { path: '', pathMatch: 'full', redirectTo: 'test' },
   // Your route here:
-
   {
     path: 'test',
-    loadChildren: () => import('auth/Module').then((m) => m.TestModule),
+    loadChildren: () => import('entries/Module').then((m) => m.TestModule),
   },
-
-  // {
-  //   path: '**',
-  //   component: AppComponent,
-  // },
-
   // DO NOT insert routes after this one.
   // { path:'**', ...} needs to be the LAST one.
 ];

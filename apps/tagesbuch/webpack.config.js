@@ -26,7 +26,7 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        auth: 'auth@https://upbeat-swanson-5c3bac.netlify.app/remoteEntry.js',
+        entries: 'entries@http://localhost:4000/remoteEntry.js',
       },
 
       shared: {

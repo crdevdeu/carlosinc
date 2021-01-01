@@ -1,45 +1,34 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const mf = require('@angular-architects/module-federation/webpack');
+const path = require('path');
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, '../../tsconfig.base.json'),
-  [/* mapped paths to share */]);
+sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
+  /* mapped paths to share */
+]);
 
 module.exports = {
   output: {
-    uniqueName: "entries"
+    uniqueName: 'entries',
   },
   optimization: {
     // Only needed to bypass a temporary bug
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   plugins: [
     new ModuleFederationPlugin({
-      
-        // For remotes (please adjust)
-        // name: "entries",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/entries/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "tagesbuch": "tagesbuch@http://localhost:5000/remoteEntry.js",
-        //     "auth": "auth@http://localhost:3000/remoteEntry.js",
+      name: 'entries',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Module': './apps/entries/src/app/test/test.module.ts',
+      },
+      shared: {
+        '@angular/core': { singleton: true, strictVersion: true },
+        '@angular/common': { singleton: true, strictVersion: true },
+        '@angular/router': { singleton: true, strictVersion: true },
 
-        // },
-
-        shared: {
-          "@angular/core": { singleton: true, strictVersion: true }, 
-          "@angular/common": { singleton: true, strictVersion: true }, 
-          "@angular/router": { singleton: true, strictVersion: true },
-
-          ...sharedMappings.getDescriptors()
-        }
-        
+        ...sharedMappings.getDescriptors(),
+      },
     }),
     sharedMappings.getPlugin(),
   ],
